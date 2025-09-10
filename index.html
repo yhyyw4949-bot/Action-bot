@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>نظام المزايدات</title>
+</head>
+<body>
+  {% if auction %}
+    <h1>🛍️ المزاد الحالي: {{ auction[0] }}</h1>
+    <p>💰 أعلى سعر: {{ auction[1] }} TON</p>
+    <p>👤 أعلى مزايد: {{ auction[2] }}</p>
+
+    <form method="post" action="/bid">
+      <input type="text" name="user" placeholder="اسمك" required>
+      <input type="number" name="amount" step="0.1" placeholder="المبلغ الجديد" required>
+      <button type="submit">زايد الآن</button>
+    </form>
+  {% else %}
+    <p>🚫 لا يوجد مزادات متاحة حالياً.</p>
+  {% endif %}
+</body>
+</html>
